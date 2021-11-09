@@ -1,0 +1,24 @@
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container, .row{
+  padding: 0;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.point-group{
+  height: 100vh;
+    overflow-y: auto;
+}
