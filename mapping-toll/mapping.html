@@ -25,7 +25,7 @@
                 <a class="list-group-item list-group-item-action" data-bs-toggle="collapse"
                   v-bind:href="'#colapsePointPanel' +  item.data.id" role="button" aria-expanded="false"
                   aria-controls="colapsePointPanel">
-                  Point - {{ item.data.id }} - {{ item.latLng }}
+                  Point - {{ item.data.id }}
                 </a>
 
                 <!-- <div class="dropdown">
@@ -45,14 +45,13 @@
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button class="btn btn-primary" type="button" v-on:click="setPointCenter(item)">
                       <i class="bi bi-geo-alt"></i>
-
                     </button>
                     <!-- <button type="button" class="btn btn-success">
                     </button> -->
                     <button class="btn btn-success" type="button" data-bs-toggle="collapse"
                       v-bind:data-bs-target="'#colapsePointLinks' +  item.data.id" aria-expanded="false"
                       aria-controls="colapsePointLinks">
-                      <i class="bi bi-link"></i>
+                      <i class="bi bi-link-45deg"></i>
 
                     </button>
                     <button type="button" class="btn btn-danger" type="button" data-bs-toggle="collapse"
@@ -79,10 +78,51 @@
                   </div>
                   <div class="collapse" v-bind:id="'colapsePointLinks' +  item.data.id">
                     <div class="card card-body">
-                      <ol class="list-group list-group-numbered">
-                        <li class="list-group-item">A list item</li>
-                        <li class="list-group-item">A list item</li>
-                        <li class="list-group-item">A list item</li>
+
+                      <ol class="list-group ">
+                        <li class="list-group-item">
+                          <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="button" v-on:click="setModoAddLink(item)">
+                              <i class="bi bi-link-45deg"></i>
+                              <i class="bi bi-plus"></i>
+                            </button>
+                          </div>
+                          <!-- <button class="btn btn-primary" type="button" v-on:click="setPointCenter(item)">
+                          <i class="bi bi-geo-alt"></i>
+                        </button> -->
+                        </li>
+
+                        <div class="card card-body">
+                          <div v-for="(link, indexJ) in item.data.links">
+
+                            <a class="list-group-item list-group-item-action" data-bs-toggle="collapse"
+                              v-bind:href="'#LinksList' +  item.data.id + link.point.data.id" role="button"
+                              aria-expanded="false" aria-controls="LinksList">
+                              <i class="bi bi-link-45deg"></i>{{ link.point.data.id }}
+                            </a>
+                            <div class="collapse" v-bind:id="'LinksList' +  item.data.id + link.point.data.id">
+                              <div class="card card-body">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+
+                                  <button class="btn btn-warning" type="button" v-on:click="setPointCenter(item)">
+                                    <i class="bi bi-geo-alt"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-danger" type="button"
+                                    v-on:click="removeLinkFromPoint(item, link)">
+                                    <i class="bi bi-trash-fill"></i>
+                                  </button>
+                                </div>
+                                <br>
+                                <h5 class="card-title">
+                                  <i class="bi bi-rulers"></i>
+                                  <i class="bi bi-geo"></i>: {{link.distance}}
+                                </h5>
+                              </div>
+                            </div>
+
+                          </div>
+
+                        </div>
                       </ol>
                     </div>
                   </div>
@@ -110,6 +150,7 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy0KX2T54ai4ZUZp829QpXG5hIwhlMSrQ&callback=initMap&v=weekly"
     async></script>
+  <script src="./constants.js"></script>
   <script src="./App.js"></script>
   <script src="./mapping.js"></script>
 
