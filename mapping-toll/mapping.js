@@ -47,48 +47,6 @@ function initMap() {
 
     addPointToMap({ lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() });
 
-    // const point = new google.maps.Circle({
-    //   strokeColor: POINT_CIRCLE_STROKE_COLOR,
-    //   strokeOpacity: 0.8,
-    //   strokeWeight: 2,
-    //   fillColor: POINT_CIRCLE_FILL_COLOR,
-    //   fillOpacity: 0.35,
-    //   map: app.map,
-    //   center: mapsMouseEvent.latLng,
-    //   radius: 5,
-    //   data: {
-    //     id: app.mappingPointsReff.length + '' + Math.floor(Math.random() * 1000000),
-    //     latLng: mapsMouseEvent.latLng,
-    //     links: []
-    //   }
-    // });
-
-    // point.addListener("click", (mapsMouseEvent) => {
-    //   console.log(mapsMouseEvent);
-    //   console.log(point);
-    //   if (app.modoAddLink) {
-    //     if (app.selectedPoint !== point) {
-    //       addLinkToPoint(point);
-    //       refreshSelectedPointMarker();
-    //     }
-    //   } else {
-    //     if (app.selectedPoint === point) {
-    //       setModoAddLink(point)
-    //     } else {
-    //       setSelectedPointMarker(point);
-    //     }
-    //   }
-
-    // });
-
-    // app.mappingPointsReff.push(point);
-    // infoWindow = new google.maps.InfoWindow({
-    //   position: mapsMouseEvent.latLng,
-    // });
-    // infoWindow.setContent(
-    //   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    // );
-    // infoWindow.open(map);
   });
 }
 
@@ -117,6 +75,8 @@ let addPointToMap = (latLng, id = null, linkIds = null) => {
       if (app.selectedPoint !== point) {
         addLinkToPoint(point);
         refreshSelectedPointMarker();
+      } else {
+        disableModoAddLink();
       }
     } else {
       if (app.selectedPoint === point) {
