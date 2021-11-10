@@ -19,12 +19,18 @@
         <div id="app">
 
           <div class="list-group point-group">
+            <a v-if="modoAddLink" class="list-group-item list-group-item-action" role="button">
+              SELECIONE UM LINK NO MAPA
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" role="button"
+              v-on:click="exportMapping()">
+              EXPORTAR MAPPING
+            </a>
+
             <div v-for="(item, index) in mappingPointsReff" :key="index">
               <div>
 
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse"
-                  v-bind:href="'#colapsePointPanel' +  item.data.id" role="button" aria-expanded="false"
-                  aria-controls="colapsePointPanel">
+                <a class="list-group-item list-group-item-action" v-on:click="setSelectedPointMarker(item)">
                   Point - {{ item.data.id }}
                 </a>
 
@@ -40,7 +46,7 @@
                   </ul>
                 </div> -->
               </div>
-              <div class="collapse" v-bind:id="'colapsePointPanel' +  item.data.id">
+              <div v-if="item === selectedPoint">
                 <div class="card card-body">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button class="btn btn-primary" type="button" v-on:click="setPointCenter(item)">
@@ -142,7 +148,7 @@
   </div>
 
 
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
