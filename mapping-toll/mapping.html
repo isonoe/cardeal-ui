@@ -17,16 +17,14 @@
     <div class="row">
       <div class="col-2">
         <div id="app">
-
+          <a v-if="modoAddLink" class="list-group-item list-group-item-action" role="button">
+            SELECIONE UM LINK NO MAPA
+          </a>
+          <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" role="button"
+            v-on:click="exportMapping()">
+            EXPORTAR MAPPING
+          </a>
           <div class="list-group point-group">
-            <a v-if="modoAddLink" class="list-group-item list-group-item-action" role="button">
-              SELECIONE UM LINK NO MAPA
-            </a>
-            <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" role="button"
-              v-on:click="exportMapping()">
-              EXPORTAR MAPPING
-            </a>
-
             <div v-for="(item, index) in mappingPointsReff" :key="index">
               <div>
 
