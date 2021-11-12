@@ -2,7 +2,6 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
     mappingPointsReff: [],
     idMappingPointsReff: {},
     map: null,

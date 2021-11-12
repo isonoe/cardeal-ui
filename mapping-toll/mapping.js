@@ -49,24 +49,16 @@ function initMap() {
 
   });
 }
-
+// TODO revisar contexto para pontos
 let addPointToMap = (latLng, id = null, linkIds = null) => {
-  const point = new google.maps.Circle({
-    strokeColor: POINT_CIRCLE_STROKE_COLOR,
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: POINT_CIRCLE_FILL_COLOR,
-    fillOpacity: 0.35,
-    map: app.map,
-    center: latLng,
-    radius: 5,
-    data: {
-      id: id || app.mappingPointsReff.length + '' + Math.floor(Math.random() * 1000000),
-      latLng: latLng,
-      linkIds: linkIds || [],
-      links: []
-    }
-  });
+  const point = drawCircle(latLng);
+  let data = {
+    id: id || app.mappingPointsReff.length + '' + Math.floor(Math.random() * 1000000),
+    latLng: latLng,
+    linkIds: linkIds || [],
+    links: []
+  }
+  point.data = data;
 
   point.addListener("click", (mapsMouseEvent) => {
     console.log(mapsMouseEvent);
@@ -92,7 +84,7 @@ let addPointToMap = (latLng, id = null, linkIds = null) => {
   app.mappingPointsReff.push(point);
 }
 
-
+// TODO revisar organização
 let createLinksOnMap = () => {
   app.mappingPointsReff.forEach(point => {
     point.data.links = [];
@@ -102,19 +94,19 @@ let createLinksOnMap = () => {
   });
 }
 
-
+// TODO separar função em arquivo "data-json.js"
 let loadMapJson = () => {
   return fetch("./mapping.json")
     .then(response => response.json())
   // .then(json => console.log(json));
 }
 
-let setPointCenter = (point) => {
+let setCenterMap = (point) => {
   console.log("point", point);
   app.map.setCenter(point.getCenter());
   setSelectedPointMarker(point);
 }
-
+// TODO reparar contexto de point
 let removePoint = (point) => {
   if (app.selectedPointMarker)
     app.selectedPointMarker.setMap(null);
@@ -227,22 +219,6 @@ let drawAllLineLinks = () => {
     });
   }
 
-}
-let drawLine = (origem, destino) => {
-  const lineCoordinates = [
-    origem,
-    destino
-  ];
-  const line = new google.maps.Polyline({
-    path: lineCoordinates,
-    geodesic: true,
-    strokeColor: "#FF0000",
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
-  });
-
-  line.setMap(app.map);
-  return line;
 }
 
 let exportMapping = () => {

@@ -47,7 +47,7 @@
               <div v-if="item === selectedPoint">
                 <div class="card card-body">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button class="btn btn-primary" type="button" v-on:click="setPointCenter(item)">
+                    <button class="btn btn-primary" type="button" v-on:click="setCenterMap(item)">
                       <i class="bi bi-geo-alt"></i>
                     </button>
                     <!-- <button type="button" class="btn btn-success">
@@ -91,7 +91,7 @@
                               <i class="bi bi-plus"></i>
                             </button>
                           </div>
-                          <!-- <button class="btn btn-primary" type="button" v-on:click="setPointCenter(item)">
+                          <!-- <button class="btn btn-primary" type="button" v-on:click="setCenterMap(item)">
                           <i class="bi bi-geo-alt"></i>
                         </button> -->
                         </li>
@@ -108,7 +108,7 @@
                               <div class="card card-body">
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 
-                                  <button class="btn btn-warning" type="button" v-on:click="setPointCenter(item)">
+                                  <button class="btn btn-warning" type="button" v-on:click="setCenterMap(item)">
                                     <i class="bi bi-geo-alt"></i>
                                   </button>
                                   <button type="button" class="btn btn-danger" type="button"
@@ -156,6 +156,7 @@
     async></script>
   <script src="./constants.js"></script>
   <script src="./App.js"></script>
+  <script src="./draw.js"></script> 
   <script src="./mapping.js"></script>
 
 </body>
