@@ -28,4 +28,26 @@ let drawCircle = (latLng)=> {
   });
   return point;
 }
+
+let resetDrawedLines = () => {
+  if (app.drawedLines) {
+    app.drawedLines.forEach(link => {
+      link.setMap(null);
+    })
+  }
+  app.drawedLines = [];
+  
+}
+
+let drawAllLineLinks = () => {
+
+  resetDrawedLines();
+
+  if (app.selectedPoint && app.selectedPoint.data && app.selectedPoint.data.links.length) {
+    app.selectedPoint.data.links.forEach(link => {
+
+      app.drawedLines.push(drawLine(app.selectedPoint.getCenter(), link.point.getCenter()));
+    });
+  }
+}
    
