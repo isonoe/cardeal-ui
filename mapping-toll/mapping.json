@@ -1,6 +1,37 @@
 {
-  "entregas": [],
-  "veiculos": [],
+  "numberOfGenerations": 100,
+  "numberOfCromossomes": 100,
+  "entregas": [
+    {
+      "descricao": "Entrega 01",
+      "saida": {
+        "descricao": "Correios",
+        "wayPoint": "0411113"
+      },
+      "destino": {
+        "descricao": "Sos Informatica",
+        "wayPoint": "7367074"
+      },
+      "peso": "4",
+      "veiculoCapacidadeMinima": "1"
+    }
+  ],
+  "veiculos": [
+    {
+      "placa": "XYZ",
+      "descricao": "Moto 01",
+      "tipoVeiculo": "MOTO",
+      "capacidadeTotal": "15",
+      "consumoPorKm": "0.3"
+    },
+    {
+      "placa": "ABDC",
+      "descricao": "Carro 01",
+      "tipoVeiculo": "CARRO",
+      "capacidadeTotal": "100",
+      "consumoPorKm": "0.5"
+    }
+  ],
   "mapping": [
     {
       "id": "0411113",
