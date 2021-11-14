@@ -21,7 +21,7 @@
             SELECIONE UM LINK NO MAPA
           </a>
           <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" role="button"
-            v-on:click="exportMapping()">
+            v-on:click="exportJsonMapping()">
             EXPORTAR MAPPING
           </a>
           <div class="list-group point-group">
@@ -155,8 +155,9 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy0KX2T54ai4ZUZp829QpXG5hIwhlMSrQ&callback=initMap&v=weekly"
     async></script>
   <script src="./constants.js"></script>
+  <script src="./utils.js"></script>
   <script src="./App.js"></script>
-  <script src="./draw.js"></script> 
+  <script src="./draw.js"></script>
   <script src="./points.js"></script>
   <script src="./links.js"></script>
   <script src="./data-json.js"></script>
